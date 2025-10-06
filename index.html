@@ -1,29 +1,365 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Emily Chen</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emily Chen - Personal Portfolio</title>
   <style>
-    body{font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Arial; margin:0; }
-    header{padding:56px 24px; text-align:center; }
-    main{max-width:900px; margin:0 auto; padding:24px;}
-    .card{border:1px solid #ddd; border-radius:16px; padding:24px; box-shadow:0 2px 8px rgba(0,0,0,.05);}
-    a{color:inherit}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #ffffff;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(196, 229, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.8);
+            transform: translateY(-2px);
+        }
+
+        /* Main content */
+        main {
+            margin-top: 80px;
+        }
+
+        section {
+            padding: 4rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: #C4E5FF;
+            text-align: center;
+            padding: 6rem 2rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #666;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+
+        /* Section styling */
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #333;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: #C4E5FF;
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        /* About Me Section */
+        .about {
+            background-color: #f8f9fa;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .profile-image {
+            width: 100%;
+            max-width: 300px;
+            height: 300px;
+            background-color: #C4E5FF;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(196, 229, 255, 0.3);
+            overflow: hidden;
+            background-image: url('headshot.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* Projects Section */
+        .projects {
+            background-color: #ffffff;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background-color: #ffffff;
+            border: 2px solid #C4E5FF;
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(196, 229, 255, 0.2);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(196, 229, 255, 0.4);
+            border-color: #a8d4ff;
+        }
+
+        .project-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .project-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .project-link {
+            display: inline-block;
+            background-color: #C4E5FF;
+            color: #333;
+            text-decoration: none;
+            padding: 0.8rem 2rem;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            background-color: #a8d4ff;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(196, 229, 255, 0.4);
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: #C4E5FF;
+        }
+
+        .contact-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-content p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #666;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: inline-block;
+            background-color: #ffffff;
+            color: #333;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            font-weight: 600;
+            border: 2px solid #C4E5FF;
+            transition: all 0.3s ease;
+        }
+
+        .contact-link:hover {
+            background-color: #C4E5FF;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(196, 229, 255, 0.4);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+                padding: 0 1rem;
+            }
+
+            nav a {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Section spacing */
+        #about, #projects, #contact {
+            scroll-margin-top: 80px;
+        }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Hi, I'm Emily 👋</h1>
-    <p>TPM-in-training • CSE & Accounting @ SCU • I bake sourdough</p>
-  </header>
-  <main>
-    <section class="card">
-      <h2>Projects</h2>
-      <ul>
-        <li><a href="#">SCU Newsroom</a></li>
-        <li><a href="#">RecipeStack</a></li>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Get in Touch</a></li>
       </ul>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Hi, I'm Emily Chen</h1>
+            <p>Technical Program Manager • CSE & Accounting @ SCU</p>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="about">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="profile-image">
+                </div>
+                <div class="about-text">
+                    <p>Hello! I'm Emily, a passionate student pursuing Computer Science and Engineering along with Accounting at Santa Clara University. I'm currently training to become a Technical Program Manager, combining my technical skills with business acumen.</p>
+                    
+                    <p>When I'm not coding or studying, you'll find me in the kitchen perfecting my sourdough bread recipes. I love the process of iteration and improvement, whether it's in software development or bread making!</p>
+                    
+                    <p>I'm always excited to learn new technologies and work on projects that make a real impact. Feel free to explore my work below and don't hesitate to reach out if you'd like to connect!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects">
+            <h2 class="section-title">My Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>SCU Newsroom</h3>
+                    <p>A comprehensive news platform for Santa Clara University, featuring user authentication, article management, and a clean, intuitive interface for students and faculty to stay informed about campus news and events.</p>
+                    <a href="https://github-scunewsroom-git-finalmain-matthew-vds-projects.vercel.app/LogIn" class="project-link" target="_blank">View Project</a>
+                </div>
+                <div class="project-card">
+                    <h3>Recipe Stack</h3>
+                    <p>A beautiful recipe sharing platform where I showcase my favorite recipes with healthier ingredient alternatives. Features include recipe exploration, matching capabilities, and a clean, user-friendly design.</p>
+                    <a href="https://recipestack.vercel.app" class="project-link" target="_blank">View Project</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <h2 class="section-title">Get in Touch</h2>
+            <div class="contact-content">
+                <p>I'm always interested in connecting with fellow developers, potential collaborators, or anyone who shares a passion for technology and innovation. Whether you want to discuss a project, share ideas, or just say hello, I'd love to hear from you!</p>
+                <div class="contact-links">
+                    <a href="mailto:emilykailin003@gmail.com" class="contact-link">Email Me</a>
+                    <a href="https://www.linkedin.com/in/emily-kchen/" class="contact-link" target="_blank">LinkedIn</a>
+                    <a href="https://github.com/emilykailin" class="contact-link" target="_blank">GitHub</a>
+                </div>
+            </div>
     </section>
   </main>
 </body>
